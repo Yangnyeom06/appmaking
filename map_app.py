@@ -87,17 +87,17 @@ def visitPlace(visit):
 visitPlace(startStatnNm)
 
 while 1 :
-    #③
+
     minDist = max(routing.values(), key=lambda x:x['shortestDist'])['shortestDist']
     toVisit = ''
     for name, search in routing.items():
         if 0 < search['shortestDist'] <= minDist and not search['visited']:
             minDist = search['shortestDist']
             toVisit = name
-    #⑤
+
     if toVisit == '':
         break
-    #④
+
     visitPlace(toVisit)
 
     print ("["+toVisit+"]")
