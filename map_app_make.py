@@ -74,7 +74,7 @@ def add_node(station_a, station_b, distance):
 
 
 #for station_list in range(len(station_dict)):
-for station_list in range(0,50):
+for station_list in range(0,150):
     # api 호출
     current_url = 'http://swopenAPI.seoul.go.kr/api/subway/4e50657a6d6c797537394443537774/json/realtimeStationArrival/0/100/{}'.format(df_list["STATN_NM"][station_list])
     # 내용 파싱
@@ -108,7 +108,7 @@ for station_list in range(0,50):
 print(stationNode)
 print(len(used_stationId)) # len(station_dict)와 같아야 함
 
-
+'''
 ######## 여기 이하는 https://phaphaya.tistory.com/34 의 코드 사용 (설명은 이 사이트에서)
 print ("-----------[", startStatnNm, "->", lastStatnNm,"]----------")
 
@@ -148,7 +148,7 @@ print ("\n", "[", startStatnNm, "->", lastStatnNm,"]")
 print ("Route : ", routing[lastStatnNm]['route'])
 print ("ShortestDistance : ", routing[lastStatnNm]['shortestDist'])
 ########
-
+'''
 
 '''
                 inner_station = {} # 내부 삽입 딕셔너리 초기화
