@@ -1,0 +1,35 @@
+from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+from kivy.uix.button import Button
+from kivy.uix.floatlayout import FloatLayout
+
+fontk = 'NanumMyeongjoEcoExtraBold'
+
+class LoginScreen(GridLayout):
+    def __init__(self, **kwargs):
+        super(LoginScreen, self).__init__(**kwargs)
+
+        self.inside = GridLayout() # Create a new grid layout
+        self.inside.cols = 2 # set columns for the new grid layout
+
+        self.cols = 2
+        self.inside.add_widget(Label(text='1', font_name=fontk, font_size=30))
+        self.username = TextInput(multiline=False, font_name=fontk, font_size=30)
+        self.inside.add_widget(self.username)
+
+        self.inside.add_widget(Label(text='2', font_name=fontk, font_size=30))
+        self.password = TextInput(password=False, multiline=False, font_name=fontk, font_size=30)
+        self.inside.add_widget(self.password)
+
+        self.add_widget(self.inside)  # Add the interior layout to the main
+        self.submit = Button(text="Submit", font_size=10)  
+        self.add_widget(self.submit) # Add the button to the main layout
+
+class MyApp(App):
+    def build(self):
+        return LoginScreen()
+
+if __name__ == '__main__':
+    MyApp().run()
