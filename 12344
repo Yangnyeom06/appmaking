@@ -1,0 +1,47 @@
+<RootLayout>:
+    sid: label1
+
+
+
+    Label:
+        id: label1
+        text: 'Departure station'
+        font_size: 15
+        size_hint: None, None
+        size: 150, 100
+        pos: 0, 300
+
+    TextInput:
+        mulitiline: False
+        font_size: 30
+        size_hint: None, None
+        size: 250, 100
+        pos: 150, 300
+
+    Label:
+        id: label2
+        text: 'Arrival station'
+        font_size: 15
+        size_hint: None, None
+        size: 150, 100
+        pos: 0, 200
+
+    TextInput:
+        password: False
+        font_size: 30
+        size_hint: None, None
+        size: 250, 100
+        pos: 150, 200
+
+    Button:
+        text: 'Search'
+        font_size: 30
+        size_hint: None, None
+        size: 250, 100
+        pos: 150, 0       
+
+    Image:
+        source: 'img_subway.png'
+        size_hint: None, None
+        size: 250, 250
+        pos: 150, 400
