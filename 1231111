@@ -1,0 +1,31 @@
+from os.path import dirname
+from os.path import join
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.textinput import TextInput
+
+fontk = 'NanumMyeongjoEcoExtraBold'
+
+kv_file = 'asdf.kv'
+Builder.load_file(join(dirname(__file__), kv_file))
+
+class RootLayout(FloatLayout):
+    def __init__(self, **kwargs):
+        super(RootLayout, self).__init__(**kwargs)        
+        
+        self.username = TextInput(multiline=False, font_name=fontk, font_size=30, size_hint=(None, None), size=(250, 100), pos=(150, 300))
+        self.add_widget(self.username)
+
+        self.password = TextInput(password=False, multiline=False, font_name=fontk, font_size=30, size_hint=(None, None), size=(250, 100), pos=(150, 200))
+        self.add_widget(self.password)
+
+class MainApp(App):
+    def build(self):
+        return RootLayout()
+
+def main():
+    MainApp().run()
+
+if __name__ == "__main__":
+    main()
