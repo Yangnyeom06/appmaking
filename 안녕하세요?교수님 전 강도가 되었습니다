@@ -3,7 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.behaviors import DragBehavior
-
+from kivy.uix.floatlayout import FloatLayout
 
 
 class DraggableImage(DragBehavior, Image):
@@ -34,19 +34,19 @@ class DraggableImage(DragBehavior, Image):
 class ResizableAndDraggableImageApp(App):
     def build(self):
         # 전체 레이아웃
-        layout = BoxLayout(orientation='vertical')
+        layout = FloatLayout()
 
         # 이미지 위젯 생성 (DraggableImage 사용)
         self.image = DraggableImage(source='img_subway.png', size_hint=(1, None), height=400)  # 이미지 파일 경로를 "img_subway.png"로 수정
         layout.add_widget(self.image)
 
         # 버튼 추가: 이미지 확대
-        zoom_in_button = Button(text='확대', size_hint=(None, None))
+        zoom_in_button = Button(text='zoom in', size_hint=(0.5, 0.1), pos_hint={"center_x": 0.2, "center_y": 0.1})
         zoom_in_button.bind(on_press=self.zoom_in)
         layout.add_widget(zoom_in_button)
 
         # 버튼 추가: 이미지 축소
-        zoom_out_button = Button(text='축소', size_hint=(None, None))
+        zoom_out_button = Button(text='zoom out', size_hint=(0.5, 0.1), pos_hint={"center_x": 0.8, "center_y": 0.1})
         zoom_out_button.bind(on_press=self.zoom_out)
         layout.add_widget(zoom_out_button)
 
