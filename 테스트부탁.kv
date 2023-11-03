@@ -1,0 +1,165 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+
+<MainWindow>:
+    name: "main"
+
+    sid:label1
+
+    FloatLayout:
+
+        Label:
+            id: label1
+            text: 'Departure station'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 250
+
+        TextInput:
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 250
+
+        Label:
+            id: label2
+            text: 'Arrival station'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 150
+
+        TextInput:
+            password: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 150
+
+        Button:
+            text: 'Submit'
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 400, 0
+            on_release:
+                app.root.current = "third"
+                root.manager.transition.direction = "left"
+
+
+        Image:
+            source: 'img_subway.png'
+            size_hint: None, None
+            size: 550, 550
+            pos: 100, 400
+
+        Button:
+            text: "Go for two"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+
+<SecondWindow>:
+    name: "second"
+
+    
+    sid:label1
+
+    FloatLayout:
+        Label:
+            id: label1
+            text: 'Departure station'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 250
+
+        TextInput:
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 250
+
+        Label:
+            id: label2
+            text: 'Arrival station'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 150
+
+        TextInput:
+            password: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 150
+
+        Label:
+            id: label3
+            font_size: 20
+            size_hint: None, None
+            size: 150, 100
+            pos: 270, 250
+
+        TextInput:
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 420, 250
+      
+        Button:
+            text: 'Submit'
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 400, 0
+            on_release:
+                app.root.current = "third"
+                root.manager.transition.direction = "left"
+
+        
+
+        Image:
+            source: 'img_subway.png'
+            size_hint: None, None
+            size: 550, 550
+            pos: 100, 400
+
+        Button:
+            text: "Go for one"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+
+
+<ThirdWindow>:
+    name: "third"
+
+
+    FloatLayout:
+        Button:
+            text: "back"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
