@@ -1,0 +1,95 @@
+
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name: "main"
+
+    startStation: _startStation
+    startStationInput: _startStationInput
+    departStation: _departStation
+    departStationInput: _departStationInput
+    printLabel: _printLabel
+
+    FloatLayout:
+        Label:
+            id: _startStation
+            text: 'startStation'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 300
+            font_name: 'nanummyeongjoEB'
+
+        TextInput:
+            id: _startStationInput
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 300
+            font_name: 'nanummyeongjoEB'
+
+        Label:
+            id: _departStation
+            text: 'departStation'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 200
+            font_name: 'nanummyeongjoEB'
+
+        TextInput:
+            id: _departStationInput
+            password: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 200
+            font_name: 'nanummyeongjoEB'
+        
+        Label:
+            id: _printLabel
+            text: '경로 출력'
+            font_size: 30
+            size_hint: None, None
+            size: 400, 400
+            pos: 400, 200
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            text: '경로 찾기'
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            on_press: root.submit()
+            font_name: 'nanummyeongjoEB'
+        
+        Image:
+            source: 'img_subway.png'
+            size_hint: None, None
+            size: 250, 250
+            pos: 150, 400
+
+        Button:
+            text: "Submit"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 400, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+<SecondWindow>:
+    name: "second"
+
+    Button:
+        text: "Go Back"
+        font_name: 'nanummyeongjoEB'
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
