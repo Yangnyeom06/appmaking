@@ -1,0 +1,42 @@
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.core.window import Window
+from kivy.uix.screenmanager import ScreenManager, Screen
+import dijkstra_station_use as ds
+from kivy.resources import resource_add_path
+from kivy.core.text import LabelBase
+
+
+Window.size = (700, 900)
+
+class MainWindow(Screen):
+    def submit(self):
+        startStation = ds.get_valid_value(self.startStationInput.text, ds.stationNode)
+        departStation = ds.get_valid_value(self.departStationInput.text, ds.stationNode)
+        if (startStation != None and departStation != None):
+            ds.solo(startStation, departStation)
+            routeResult = ds.routeResult
+            ShortestDistanceResult = ds.ShortestDistanceResult
+
+class SecondWindow(Screen):
+    pass
+
+class ThirdWindow(Screen):
+    pass
+
+
+class WindowManager(ScreenManager):
+    pass
+
+
+
+kv = Builder.load_file("screen_manager1.kv")
+
+class MyMainApp(App):
+    LabelBase.register(name='nanummyeongjoEB', fn_regular='나눔명조EB.ttf')
+    
+    def build(self):
+        return kv
+
+if __name__ == "__main__":
+    MyMainApp().run()
