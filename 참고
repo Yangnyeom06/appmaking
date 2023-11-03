@@ -1,0 +1,74 @@
+
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name: "main"
+
+    
+    sid:label1
+
+    FloatLayout:
+        Label:
+            id: label1
+            text: '출발역'
+            font_size: 30
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 300
+
+        TextInput:
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 300
+
+        Label:
+            id: label2
+            text: '도착역'
+            font_size: 30
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 200
+
+        TextInput:
+            password: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 200
+
+        Button:
+            text: '완료'
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+        
+
+        Image:
+            source: 'img_subway.png'
+            size_hint: None, None
+            size: 250, 250
+            pos: 150, 400
+
+        Button:
+            text: "Submit"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 400, 0
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+<SecondWindow>:
+    name: "second"
+
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
