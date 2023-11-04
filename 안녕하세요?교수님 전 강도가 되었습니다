@@ -1,0 +1,68 @@
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.image import Image
+from kivy.uix.button import Button
+from kivy.uix.behaviors import DragBehavior
+from kivy.uix.floatlayout import FloatLayout
+
+
+class DraggableImage(DragBehavior, Image):
+    # Override the on_touch_down method to detect when the user touches the widget
+   def on_touch_down(self, touch):
+      if self.collide_point(*touch.pos):
+         # If the touch event occurred within the widget's bounds, handle the touch event
+         # by setting the widget as the current touch target
+         touch.grab(self)
+         return True
+      return super().on_touch_down(touch)
+
+   # Override the on_touch_move method to track the movement of the user's finger
+   def on_touch_move(self, touch):
+      if touch.grab_current == self:
+         # If the touch event is being handled by our widget, update the widget's position
+         self.pos = (self.pos[0] + touch.dx, self.pos[1] + touch.dy)
+
+   # Override the on_touch_up method to update the widget's position when the touch event ends
+   def on_touch_up(self, touch):
+      if touch.grab_current == self:
+         # If the touch event is being handled by our widget, release the widget as the current
+         # touch target and handle the touch event
+         touch.ungrab(self)
+         return True
+      return super().on_touch_up(touch)
+
+class ResizableAndDraggableImageApp(App):
+    def build(self):
+        # 전체 레이아웃
+        layout = FloatLayout()
+
+        # 이미지 위젯 생성 (DraggableImage 사용)
+        self.image = DraggableImage(source='img_subway.png', size_hint=(1, None), height=400)  # 이미지 파일 경로를 "img_subway.png"로 수정
+        layout.add_widget(self.image)
+
+        # 버튼 추가: 이미지 확대
+        zoom_in_button = Button(text='zoom in', size_hint=(0.5, 0.1), pos_hint={"center_x": 0.2, "center_y": 0.1})
+        zoom_in_button.bind(on_press=self.zoom_in)
+        layout.add_widget(zoom_in_button)
+
+        # 버튼 추가: 이미지 축소
+        zoom_out_button = Button(text='zoom out', size_hint=(0.5, 0.1), pos_hint={"center_x": 0.8, "center_y": 0.1})
+        zoom_out_button.bind(on_press=self.zoom_out)
+        layout.add_widget(zoom_out_button)
+
+        return layout
+
+    def zoom_in(self, instance):
+        # 이미지 확대
+        current_height = self.image.height
+        new_height = current_height * 1.1
+        self.image.height = new_height
+
+    def zoom_out(self, instance):
+        # 이미지 축소
+        current_height = self.image.height
+        new_height = current_height / 1.1
+        self.image.height = new_height
+
+if __name__ == '__main__':
+    ResizableAndDraggableImageApp().run()
