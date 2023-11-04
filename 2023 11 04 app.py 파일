@@ -1,0 +1,49 @@
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen
+import dijkstra_station_use as ds
+from kivy.resources import resource_add_path
+from kivy.core.text import LabelBase
+
+_routeResult = None
+
+class MainWindow(Screen):
+    def solo_submit(self):
+        global _routeResult
+        startStation = ds.get_valid_value(self.startStationInput.text, ds.stationNode)
+        departStation = ds.get_valid_value(self.departStationInput.text, ds.stationNode)
+        if (startStation != None and departStation != None):
+            ds.solo(startStation, departStation)
+            _routeResult = str(ds.routeResult)
+            shortestDistResult = ds.shortestDistResult
+
+        elif (startStation == None and departStation != None):
+            _routeResult = str("출발역이 잘못 입력되었습니다. 다시 입력해주세요")
+        elif (startStation != None and departStation == None):
+            _routeResult = str("도착역이 잘못 입력되었습니다. 다시 입력해주세요")
+        else:
+            _routeResult = str("유효하지 않은 입력입니다. 다시 입력해주세요.")
+
+
+
+class SecondWindow(Screen):
+    pass
+
+class ThirdWindow(Screen):
+    def on_enter(self):
+        self.printLabel.text = _routeResult
+
+class WindowManager(ScreenManager):
+    pass
+
+
+kv = Builder.load_file("screen_manager.kv")
+
+class MyMainApp(App): 
+    LabelBase.register(name='nanummyeongjoEB', fn_regular='나눔명조EB.ttf')
+
+    def build(self):
+        return kv
+
+if __name__ == "__main__":
+    MyMainApp().run()
