@@ -1,0 +1,214 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+
+<MainWindow>:
+    name: "main"
+
+    startStation: _startStation
+    startStationInput: _startStationInput
+    arriveStation: _arriveStation
+    arriveStationInput: _arriveStationInput
+    auto_word_output: _auto_word_output
+
+    FloatLayout:
+        Label:
+            id: _auto_word_output
+            text: ''
+            font_size: 15
+            size_hint: None, None
+            size: 150, 300
+            pos: 420, 250
+            font_name: 'nanummyeongjoEB'
+
+        Label:
+            id: _startStation
+            text: '출발역'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 250
+            font_name: 'nanummyeongjoEB'
+
+        TextInput:
+            id: _startStationInput
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 250
+            font_name: 'nanummyeongjoEB'
+            on_text: root.auto_word_complete()
+
+        Label:
+            id: _arriveStation
+            text: '도착역'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 150
+            font_name: 'nanummyeongjoEB'
+
+        TextInput:
+            id: _arriveStationInput
+            password: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 150
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            text: 'Submit'
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 400, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "third"
+                root.solo_submit()
+                root.manager.transition.direction = "left"
+
+        Image:
+            source: 'img_subway.png'
+            size_hint: None, None
+            size: 550, 550
+            pos: 100, 400
+
+        Button:
+            text: "Go for two"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+
+<SecondWindow>:
+    name: "second"
+
+    startStation_1: _startStation_1
+    startStationInput_1: _startStationInput_1
+    startStation_2: _startStation_2
+    startStationInput_2: _startStationInput_2
+    arriveStation: _arriveStation
+    arriveStationInput: _arriveStationInput
+
+    FloatLayout:
+        Label:
+            id: _startStation_1
+            text: '출발역1'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 250
+            font_name: 'nanummyeongjoEB'
+
+        TextInput:
+            id: _startStationInput_1
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 250
+            font_name: 'nanummyeongjoEB'
+
+        Label:
+            id: _arriveStation
+            text: '도착역'
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 150
+            font_name: 'nanummyeongjoEB'
+
+        TextInput:
+            id: _arriveStationInput
+            password: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 150
+            font_name: 'nanummyeongjoEB'
+
+        Label:
+            id: _startStation_2
+            text: '출발역2'
+            font_size: 20
+            size_hint: None, None
+            size: 150, 100
+            pos: 420, 150
+            font_name: 'nanummyeongjoEB'
+
+        TextInput:
+            id: _startStationInput_2
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 420, 250
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            text: 'Submit'
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 400, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "third"
+                root.multi_submit()
+                root.manager.transition.direction = "left"
+
+
+
+        Image:
+            source: 'img_subway.png'
+            size_hint: None, None
+            size: 550, 550
+            pos: 100, 400
+
+        Button:
+            text: "Go for one"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+
+
+<ThirdWindow>:
+    name: "third"
+
+    printLabel: _printLabel
+
+    FloatLayout:
+        Label:
+            id: _printLabel
+            text: ''
+            font_size: 15
+            size_hint: None, None
+            size: 150, 100
+            pos: 300, 150
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            text: "back"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
