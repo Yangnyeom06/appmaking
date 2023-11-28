@@ -43,6 +43,9 @@ WindowManager:
             pos: 150, 250
             font_name: 'nanummyeongjoEB'
             on_text: root.auto_word_complete()
+            on_focus:
+                if self.focus: print("focusing in..."), root.auto_word_complete()
+                else: print("defocusing"), root.un_auto_word_complete()
 
         Label:
             id: _arriveStation
