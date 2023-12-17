@@ -1,0 +1,280 @@
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen
+import dijkstra_station_use as ds
+import difflib
+from difflib import get_close_matches
+from kivy.resources import resource_add_path
+from kivy.core.text import LabelBase
+from kivy.core.window import Window
+from kivy.uix.button import Button
+from kivy.uix.scrollview import ScrollView
+from kivy.uix.gridlayout import GridLayout
+
+
+_routeResult = None
+solo = False
+multi = False
+a = True
+b = True
+c = True
+e = True
+f = True
+g = True
+h = True
+i = True
+j = True
+l = True
+m = True
+n = True
+
+station_choice = None
+startStation1 = True
+startStation2 = True
+arriveStation = True
+
+
+#region list
+a_list = ['가능', '가락시장', '가산디지털단지', '가양', '가오리', '가좌', '가천대', '가평', '간석', '갈매', '강남', '강남구청', '강동', '강동구청', '강매', '강변', '강일', '강촌', '개롱', '개봉', '개포동', '개화', '개화산', '거여', '건대입구', '검암', '경기광주', '경마공원', '경복궁', '경찰병원', '계양', '고덕', '고려대', '고색', '고속터미널', '고잔', '곡산', '곤지암', '공덕', '공릉(서울산업대입구)', '공항시장', '공항화물청사', '과천', '관악', '광교', '광교중앙', '광나루(장신대)', '광명', '광명사거리', '광운대', '광화문', '광흥창', '교대', '구로', '구로디지털단지', '구룡', '구리', '구반포', '구산', '구성', '구의', '구일', '구파발', '국수', '국회의사당', '군자(능동)', '군포', '굴봉산', '굴포천', '굽은다리(강동구민회관앞)', '금곡', '금릉', '금정', '금천구청', '금촌', '금호', '기흥', '길동', '길음', '김유정', '김포공항']
+b_list = ['낙성대', '남구로', '남동인더스파크', '남부터미널', '남성', '남영', '남위례', '남춘천', '남태령', '남한산성입구', '내방', '노들', '노량진', '노원', '녹번', '녹사평', '녹양', '녹천', '논현', '능곡']
+c_list = ['단대오거리', '달미', '달월', '답십리', '당고개', '당산', '당정', '대곡', '대공원', '대림', '대모산입구', '대방', '대성리', '대야미', '대청', '대치', '대화', '대흥(서강대앞)', '덕계', '덕소', '덕정', '도곡', '도농', '도림천', '도봉', '도봉산', '도심', '도원', '도화', '독립문', '독바위', '독산', '돌곶이', '동대문', '동대문역사문화공원', '동대입구', '동두천', '동두천중앙', '동묘앞', '동암', '동인천', '동작', '동천', '두정', '둔촌동', '둔촌오륜', '등촌', '디지털미디어시티', '뚝섬', '뚝섬유원지']
+
+e_list = ['마곡', '마곡나루', '마두', '마들', '마석', '마장', '마천', '마포', '마포구청', '망우', '망원', '망월사', '망포', '매교', '매봉', '매탄권선', '먹골', '면목', '명동', '명일', '명학', '모란', '목동', '몽촌토성(평화의문)', '무악재', '문래', '문산', '문정', '미금', '미사', '미아', '미아사거리']
+f_list = ['반월', '반포', '발산', '방배', '방이', '방학', '방화', '배방', '백마', '백석', '백양리', '백운', '버티고개', '범계', '별내', '병점', '보라매', '보문', '보산', '보정', '복정', '봉명', '봉은사', '봉천', '봉화산', '부개', '부발', '부천', '부천시청', '부천종합운동장', '부평', '부평구청', '북한산보국문', '북한산우이', '불광']
+g_list = ['사가정', '사당', '사릉', '사리', '사평', '산곡', '산본', '산성', '삼각지', '삼동', '삼산체육관', '삼성', '삼성중앙', '삼송', '삼양', '삼양사거리', '삼전', '상갈', '상계', '상도(중앙대앞)', '상동', '상록수', '상봉', '상수', '상왕십리', '상월곡(한국과학기술연구원)', '상일동', '상천', '상현', '새절(신사)', '샛강', '서강대', '서대문', '서동탄', '서빙고', '서울', '서울대입구', '서울숲', '서정리', '서초', '서현', '석계', '석남', '석수', '석촌', '석촌고분', '선릉', '선바위', '선부', '선유도', '선정릉', '성균관대', '성복', '성수', '성신여대입구', '성환', '세류', '세마', '세종왕릉', '소래포구', '소사', '소새울', '소요산', '솔밭공원', '솔샘', '송내', '송도', '송정', '송탄', '송파', '송파나루', '수내', '수락산', '수리산', '수색', '수서', '수 원', '수원시청', '수유', '수지구청', '수진', '숙대입구', '숭실대입구(살피재)', '숭의', '시우', '시청', '시흥능곡', '시흥대야', '시흥시청', '신갈', '신금호', '신길', '신길온천', '신내', '신논현', '신답', '신당', '신대방', '신대방삼거리', '신도림', '신둔도예촌', '신림', '신목동', '신반포', '신방화', '신사', '신설동', '신용산', '신원', '신이문', '신정(은행정)', '신정네거리', '신중동', '신창', '신천', '신촌', '신촌(경의중앙선)', '신포', '신풍', '신현', '신흥', '쌍문', '쌍용(나사렛대)']
+h_list = ['아산', '아신', '아차산(어린이대공원후문)', '아현', '안국', '안산', '안암(고대병원앞)', '안양', '암사', '압구정', '압구정로데오', '애오개', '야당', '야목', '야탑', '약수', '양수', '양원', '양재', '양재시민의숲', '양정', '양주', '양천구청', '양천향교', '양평', '어린이대공원(세종대)', '어천', '언주', '여의나루', '여의도', '여주', '역곡', '역삼', '역촌', '연수', '연신내', '염창', '영등포', '영등포구청', '영등포시장', '영종', '영통', '오금', '오류동', '오리', '오목교(목동운동장앞)', '오목천', '오빈', '오산', '오산대', '오이도', '옥수', '온수', '온양온천', '올림픽공원(한국체대)', '왕십리', '외대앞', '용답', '용두', '용마산', '용문', '용산', '우장산', '운길산', '운서', '운정', '원당', '원덕', '원시', '원인재', '원종', '원흥', '월계', '월곡(동덕 여대)', '월곶', '월드컵경기장(성산)', '월롱', '을지로3가', '을지로4가', '을지로입구', '응봉', '응암순환(상선)', '의왕', '의정부', '이대', '이매', '이천', '이촌', '이태원', '인덕원', '인천', '인천공항1터미널', '인천공항2터미널', '인천논현', '인하대', '일산', '일원']
+i_list = ['잠실', '잠실나루', '잠실새내', '잠원', '장승배기', '장암', '장지', '장한평', '정릉', '정발산', '정부과천청사', '정왕', '정자', '제기동', '제물포', '종각', '종로3가', '종로5가', '종합운동장', '주안', '주엽', '죽전', '중계', '중곡', '중동', '중랑', '중앙', '중앙보훈병원', '중화', '증미', '증산(명지대앞)', '지제', '지축', '지평', '지행', '직산', '진위']
+j_list = ['창동', '창신', '천마산', '천안', '천왕', '천호(풍납토성)', '철산', '청계산입구', '청구', '청담', '청라국제도시', '청량리', '청명', '청평', '초월', '초지', '총신대입구(이수)', '춘의', '춘천', '충무로', '충정로']
+
+l_list = ['탄현', '탕정', '태릉입구', '태평', '퇴계원']
+m_list = ['파주', '판교', '팔당', '평내호평', '평촌', '평택', '풍산']
+n_list = ['하계', '하남검단산', '하남시청', '하남풍산', '학동', '학여울', '한강진', '한남', '한대앞', '한성대입구', '한성백제', '한양대', '한티', '합정', '행당', '행신', '혜화', '호구포', '홍대입구', '홍제', '화계', '화곡', '화랑대(서울여대입구)', '화서', '화전', '화정', '회기', '회룡', '회현', '효창공원앞', '흑석']
+#endregion
+
+class MainWindow(Screen):
+    def solo_submit(self):
+        global _routeResult 
+        global solo
+        solo = True
+
+        startStation = ds.get_valid_value(self.startStationInput.text, ds.stationNode)
+        arriveStation = ds.get_valid_value(self.arriveStationInput.text, ds.stationNode)
+        if (startStation != "--" and arriveStation != "--"):
+            ds.solo(startStation, arriveStation)
+            _routeResult = str("[출발역 ~ 도착역 : {} ]\n".format(ds.routeResult))
+            _routeResult += str("[거리 : {}(km)]\n".format(ds.shortestDistResult))
+
+        elif (startStation == "--" and arriveStation != "--"):
+            _routeResult = str("출발역이 잘못 입력되었습니다. 다시 입력해주세요")
+        elif (startStation != "--" and arriveStation == "--"):
+            _routeResult = str("도착역이 잘못 입력되었습니다. 다시 입력해주세요")
+        else:
+            _routeResult = str("유효하지 않은 입력입니다. 다시 입력해주세요.")
+
+class SecondWindow(Screen):
+    def multi_submit(self):
+        global _routeResult
+        global multi
+        global _stopover_arrive_routeResult
+        global _startStation1_stopover_routeResult
+        global _startStation2_stopover_routeResult
+        global _stopover_arrive_shortestDistResult
+        global _startStation1_stopover_shortestDistResult
+        global _startStation2_stopover_shortestDistResult
+        multi = True
+        _routeResult = ''
+
+        startStation_1 = ds.get_valid_value(self.startStationInput_1.text, ds.stationNode)
+        startStation_2 = ds.get_valid_value(self.startStationInput_2.text, ds.stationNode)
+        arriveStation = ds.get_valid_value(self.arriveStationInput.text, ds.stationNode)
+        if (startStation_1 != "--" and startStation_2 != "--" and arriveStation != "--"):
+            ds.multi(startStation_1, startStation_2, arriveStation)
+            _stopover_arrive_routeResult = str(ds.stopover_arrive_routeResult)
+            _startStation1_stopover_routeResult = str(ds.startStation1_stopover_routeResult)
+            _startStation2_stopover_routeResult = str(ds.startStation2_stopover_routeResult)
+            _stopover_arrive_shortestDistResult = str(ds.stopover_arrive_shortestDistResult)
+            _startStation1_stopover_shortestDistResult = str(ds.startStation1_stopover_shortestDistResult)
+            _startStation2_stopover_shortestDistResult = str(ds.startStation2_stopover_shortestDistResult)
+
+            _routeResult = str("[출발역 1 ~ 경유역 : {} ]\n".format(_startStation1_stopover_routeResult))
+            _routeResult += str("[거리 : {}(km)]\n".format(_startStation1_stopover_shortestDistResult))
+            _routeResult += str("[출발역 2 ~ 경유역 : {} ]\n".format(_startStation2_stopover_routeResult))
+            _routeResult += str("[거리 : {}(km)]\n".format(_startStation2_stopover_shortestDistResult))
+            _routeResult += str("[경유역 ~ 도착역 : {} ]\n".format(_stopover_arrive_routeResult))
+            _routeResult += str("[거리 : {}(km)]\n".format(_stopover_arrive_shortestDistResult))
+        try:
+            if (startStation_1 == "--"):
+                _routeResult += str("출발역_1이(가) 잘못 입력되었습니다. 다시 입력해주세요\n")
+            if (startStation_2 == "--"):
+                _routeResult += str("출발역_2이(가) 잘못 입력되었습니다. 다시 입력해주세요\n")
+            if (arriveStation == "--"):
+                _routeResult += str("도착역이 잘못 입력되었습니다.다시 입력해주세요.\n")
+        except:
+            _routeResult = "무언가 잘못되었습니다."
+
+class ThirdWindow(Screen):
+    def on_enter(self):
+        global solo
+        global multi
+        if (solo == True):
+            self.printLabel.text = str(_routeResult + "\n")
+            solo = False
+        elif (multi == True):
+            self.printLabel.text = str(_routeResult + "\n")
+            multi = False
+
+    def on_pre_leave(self):
+        global _routeResult
+        _routeResult = ''
+        self.printLabel.text = ''
+
+class ListStation(Screen):
+    pass
+
+class WindowManager(ScreenManager):
+    pass
+
+
+
+#region station
+class Station_A(Screen):
+    #def on_pre_enter(self):
+
+
+    def on_enter(self):
+        global a
+        if (a == True):
+            for i in range(len(a_list)):
+                btn = Button(text=str(a_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.ids[a_list[i]] = btn
+                btn.bind(on_release = lambda x:self.sendStation())
+                self.gridlayout.add_widget(btn)
+        a = False
+
+
+    def sendStation(self):
+        self.submit.text = str(self.ids)
+        print(str(self.ids['가락시장'].text))
+
+
+class Station_B(Screen):
+    def on_enter(self):
+        global b
+        if (b == True):
+            for i in range(len(b_list)):
+                btn = Button(text=str(b_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        b = False
+
+class Station_C(Screen):
+    def on_enter(self):
+        global c
+        if (c == True):
+            for i in range(len(c_list)):
+                btn = Button(text=str(c_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        a = False
+
+class Station_E(Screen):
+    def on_enter(self):
+        global e
+        if (e == True):
+            for i in range(len(e_list)):
+                btn = Button(text=str(e_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        e = False
+
+class Station_F(Screen):
+    def on_enter(self):
+        global f
+        if (f == True):
+            for i in range(len(f_list)):
+                btn = Button(text=str(f_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        f = False
+
+class Station_G(Screen):
+    def on_enter(self):
+        global g
+        if (g == True):
+            for i in range(len(g_list)):
+                btn = Button(text=str(g_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        g = False
+
+class Station_H(Screen):
+    def on_enter(self):
+        global h
+        if (h == True):
+            for i in range(len(h_list)):
+                btn = Button(text=str(h_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        h = False
+
+class Station_I(Screen):
+    def on_enter(self):
+        global i
+        if (i == True):
+            for i in range(len(i_list)):
+                btn = Button(text=str(i_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        i = False
+
+class Station_J(Screen):
+    def on_enter(self):
+        global j
+        if (j == True):
+            for i in range(len(j_list)):
+                btn = Button(text=str(j_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        j = False
+
+class Station_L(Screen):
+    def on_enter(self):
+        global l
+        if (a == True):
+            for i in range(len(l_list)):
+                btn = Button(text=str(l_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        l = False
+
+class Station_M(Screen):
+    def on_enter(self):
+        global m
+        if (m == True):
+            for i in range(len(m_list)):
+                btn = Button(text=str(m_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        m = False
+
+class Station_N(Screen):
+    def on_enter(self):
+        global n
+        if (n == True):
+            for i in range(len(n_list)):
+                btn = Button(text=str(n_list[i]), size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
+                self.gridlayout.add_widget(btn)
+        n = False
+#endregion
+
+kv = Builder.load_file("screen_manager_1.kv")
+class MyMainApp(App):
+    LabelBase.register(name='nanummyeongjoEB', fn_regular='나눔명조EB.ttf')
+    
+    def build(self):
+        return kv
+
+if __name__ == "__main__":
+    MyMainApp().run()
