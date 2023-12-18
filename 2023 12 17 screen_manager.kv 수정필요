@@ -15,7 +15,7 @@ WindowManager:
     Station_L:
     Station_M:
     Station_N:
-    
+
 
 <MainWindow>:
     name: "main"
@@ -48,6 +48,7 @@ WindowManager:
             on_release:
                 app.root.current = "ListStation"
                 root.manager.transition.direction = "right"
+                root.clicked(self)
 
         Label:
             id: _arriveStation
@@ -70,6 +71,7 @@ WindowManager:
             on_release:
                 app.root.current = "ListStation"
                 root.manager.transition.direction = "right"
+                root.clicked(self)
 
         Button:
             text: 'Submit'
@@ -260,6 +262,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "left"
+                root.clicked()
 
     ScrollView:
         size: 500, 320
@@ -267,7 +270,7 @@ WindowManager:
         pos_hint: {"center_x": .5, "center_y": .5}
         do_scroll_x: False
 
-        
+
 
         GridLayout:
             size_hint: None, None
@@ -276,7 +279,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-            
+
             Button:
                 text: "ㄱ"
                 size_hint: None, None
@@ -285,7 +288,7 @@ WindowManager:
                 on_release:
                     app.root.current = "station_A"
                     root.manager.transition.direction = "right"
-                
+
             Button:
                 text: "ㄴ"
                 size_hint: None, None
@@ -385,13 +388,13 @@ WindowManager:
                     app.root.current = "station_N"
                     root.manager.transition.direction = "right"
 
-                
-            
-            
 
 
 
-            
+
+
+
+
 
 
 
@@ -413,7 +416,7 @@ WindowManager:
             on_release:
                 app.root.current = "ListStation"
                 root.manager.transition.direction = "left"
-            
+
         Button:
             id: _submit
             text: "submit"
@@ -474,7 +477,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -491,7 +494,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_C>:
@@ -524,7 +527,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -541,7 +544,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_E>:
@@ -574,7 +577,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -591,7 +594,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_F>:
@@ -624,7 +627,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -641,7 +644,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_G>:
@@ -674,7 +677,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -691,7 +694,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_H>:
@@ -724,7 +727,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -741,7 +744,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_I>:
@@ -774,7 +777,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -791,7 +794,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_J>:
@@ -824,7 +827,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -874,7 +877,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -891,7 +894,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_M>:
@@ -924,7 +927,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -941,7 +944,7 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
+
 
 
 <Station_N>:
@@ -974,7 +977,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-    
+
     ScrollView:
         id: _scrollview
         size: 500, 320
@@ -991,4 +994,3 @@ WindowManager:
             spacing: "10dp"
             padding: "10dp"
             width: 235
-        
