@@ -28,10 +28,10 @@ l = True
 m = True
 n = True
 
-station_choice = None
-startStation1 = True
-startStation2 = True
-arriveStation = True
+station_choice = "--"
+startStation1 = False
+startStation2 = False
+arriveStation = False
 
 
 #region list
@@ -53,7 +53,7 @@ n_list = ['하계', '하남검단산', '하남시청', '하남풍산', '학동',
 
 class MainWindow(Screen):
     def solo_submit(self):
-        global _routeResult 
+        global _routeResult
         global solo
         solo = True
 
@@ -70,6 +70,32 @@ class MainWindow(Screen):
             _routeResult = str("도착역이 잘못 입력되었습니다. 다시 입력해주세요")
         else:
             _routeResult = str("유효하지 않은 입력입니다. 다시 입력해주세요.")
+
+    def clicked(self, instance):
+        global startStation1
+        global arriveStation
+        '''
+        if (self.ids[instance.text].text == "_startStationInput"):
+            startStation1 = True
+        elif (self.ids[instance.text].text == "_arriveStationInput"):
+            arriveStation = True
+        else:
+            pass
+        '''
+        print(instance.text)
+
+    def on_pre_enter(self):
+        global station_choice
+        global startStation1
+        global arriveStation
+        if (startStation1 == True):
+            self.startStationInput.text = station_choice
+            startStation1 = False
+            
+        elif(arriveStation == True):
+            self.arriveStationInput.text = station_choice
+            
+
 
 class SecondWindow(Screen):
     def multi_submit(self):
@@ -112,6 +138,36 @@ class SecondWindow(Screen):
         except:
             _routeResult = "무언가 잘못되었습니다."
 
+    def clicked(self, instance):
+        global startStation1
+        global startStation2
+        global arriveStation
+        if (self.ids[instance.text].text == "_startStationInput_1"):
+            startStation1 = True
+        elif (self.ids[instance.text].text == "_startStationInput_2"):
+            startStation2 = True
+        elif (self.ids[instance.text].text == "_arriveStationInput"):
+            arriveStation = True
+        else:
+            pass
+
+    def on_pre_enter(self):
+        global station_choice
+        global startStation1
+        global startStation2
+        global arriveStation
+        if (startStation1 == True):
+            self.startStationInput.text = station_choice
+            startStation1 = False
+
+        elif (startStation2 == True):
+            self.startStationInput_1.text = station_choice
+            startStation2 = False
+            
+        elif (arriveStation == True):
+            self.arriveStationInput.text = station_choice
+            arriveStation = False
+
 class ThirdWindow(Screen):
     def on_enter(self):
         global solo
@@ -129,7 +185,16 @@ class ThirdWindow(Screen):
         self.printLabel.text = ''
 
 class ListStation(Screen):
-    pass
+    def clicked(self):
+        global station_choice
+        global startStation1
+        global startStation2
+        global arriveStation
+        startStation1 = False
+        startStation2 = False
+        arriveStation = False
+        station_choice = "--"
+
 
 class WindowManager(ScreenManager):
     pass
@@ -148,18 +213,21 @@ class Station_A(Screen):
                 btn = Button(text=str(a_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB')
                 self.ids[a_list[i]] = btn
-                btn.bind(on_release = lambda x:self.sendStation())
+                btn.bind(on_release = self.sendStation)
                 self.gridlayout.add_widget(btn)
         a = False
 
+    def on_pre_leave(self):
+        global station_choice
+        station_choice = self.submit.text
 
-    def sendStation(self):
-        self.submit.text = str(self.ids)
-        print(str(self.ids['가락시장'].text))
+    def sendStation(self, instance):
+        self.submit.text = str(self.ids[instance.text].text)
 
 
 class Station_B(Screen):
     def on_enter(self):
+        global station_choice
         global b
         if (b == True):
             for i in range(len(b_list)):
@@ -170,6 +238,7 @@ class Station_B(Screen):
 
 class Station_C(Screen):
     def on_enter(self):
+        global station_choice
         global c
         if (c == True):
             for i in range(len(c_list)):
@@ -180,6 +249,7 @@ class Station_C(Screen):
 
 class Station_E(Screen):
     def on_enter(self):
+        global station_choice
         global e
         if (e == True):
             for i in range(len(e_list)):
@@ -190,6 +260,7 @@ class Station_E(Screen):
 
 class Station_F(Screen):
     def on_enter(self):
+        global station_choice
         global f
         if (f == True):
             for i in range(len(f_list)):
@@ -200,6 +271,7 @@ class Station_F(Screen):
 
 class Station_G(Screen):
     def on_enter(self):
+        global station_choice
         global g
         if (g == True):
             for i in range(len(g_list)):
@@ -210,6 +282,7 @@ class Station_G(Screen):
 
 class Station_H(Screen):
     def on_enter(self):
+        global station_choice
         global h
         if (h == True):
             for i in range(len(h_list)):
@@ -220,6 +293,7 @@ class Station_H(Screen):
 
 class Station_I(Screen):
     def on_enter(self):
+        global station_choice
         global i
         if (i == True):
             for i in range(len(i_list)):
@@ -230,6 +304,7 @@ class Station_I(Screen):
 
 class Station_J(Screen):
     def on_enter(self):
+        global station_choice
         global j
         if (j == True):
             for i in range(len(j_list)):
@@ -240,6 +315,7 @@ class Station_J(Screen):
 
 class Station_L(Screen):
     def on_enter(self):
+        global station_choice
         global l
         if (a == True):
             for i in range(len(l_list)):
@@ -250,6 +326,7 @@ class Station_L(Screen):
 
 class Station_M(Screen):
     def on_enter(self):
+        global station_choice
         global m
         if (m == True):
             for i in range(len(m_list)):
@@ -260,6 +337,7 @@ class Station_M(Screen):
 
 class Station_N(Screen):
     def on_enter(self):
+        global station_choice
         global n
         if (n == True):
             for i in range(len(n_list)):
@@ -269,7 +347,7 @@ class Station_N(Screen):
         n = False
 #endregion
 
-kv = Builder.load_file("screen_manager_1.kv")
+kv = Builder.load_file("screen_manager.kv")
 class MyMainApp(App):
     LabelBase.register(name='nanummyeongjoEB', fn_regular='나눔명조EB.ttf')
     
