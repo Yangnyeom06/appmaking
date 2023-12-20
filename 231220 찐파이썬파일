@@ -7,6 +7,7 @@ from difflib import get_close_matches
 from kivy.resources import resource_add_path
 from kivy.core.text import LabelBase
 from kivy.core.window import Window
+from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
@@ -185,7 +186,6 @@ class SecondWindow(Screen):
 class ThirdWindow(Screen):
     def on_enter(self):
         global solo
-        global 
         global _start_arrive_routeResult
         global _start_arrive_shortestDistResult
         
@@ -223,9 +223,6 @@ class ThirdWindow1(Screen):
         global _startStation1_stopover_shortestDistResult
         global _startStation2_stopover_shortestDistResult
 
-        grid1 = self.ids._gridlayout1
-        grid2 = self.ids._gridlayout2
-        grid3 = self.ids._gridlayout3
 
         for i in range(len(_startStation1_stopover_routeResult)+2):
             if (i == 0):
@@ -240,7 +237,7 @@ class ThirdWindow1(Screen):
                 lab = Label(text = _startStation1_stopover_routeResult[i-1], size=(240, 40),
                         size_hint=(None, None), font_name = 'nanummyeongjoEB',
                         background_color = (79/255, 126/255, 204/255, 1))
-            self.grid1.add_widget(lab)
+            self.gridlayout1.add_widget(lab)
 
         for i in range(len(_startStation2_stopover_routeResult)+2):
             if (i == 0):
@@ -255,7 +252,7 @@ class ThirdWindow1(Screen):
                 lab = Label(text = _startStation2_stopover_routeResult[i-1], size=(240, 40),
                         size_hint=(None, None), font_name = 'nanummyeongjoEB',
                         background_color = (79/255, 126/255, 204/255, 1))
-            self.grid2.add_widget(lab)
+            self.gridlayout2.add_widget(lab)
 
         for i in range(len(_stopover_arrive_routeResult)+2):
             if (i == 0):
@@ -270,7 +267,7 @@ class ThirdWindow1(Screen):
                 lab = Label(text = _stopover_arrive_routeResult[i-1], size=(240, 40),
                         size_hint=(None, None), font_name = 'nanummyeongjoEB',
                         background_color = (79/255, 126/255, 204/255, 1))
-            self.grid3.add_widget(lab)
+            self.gridlayout3.add_widget(lab)
 
         mulit = False
 
