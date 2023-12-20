@@ -18,7 +18,14 @@ Config.set('graphics', 'height', '800')
 Config.write()
 
 
-
+_start_arrive_routeResult = None
+_start_arrive_shortestDistResult = None
+_stopover_arrive_routeResult = None
+_startStation1_stopover_routeResult = None
+_startStation2_stopover_routeResult = None
+_stopover_arrive_shortestDistResult = None
+_startStation1_stopover_shortestDistResult = None
+_startStation2_stopover_shortestDistResult = None
 
 _routeResult = None
 solo = False
@@ -64,12 +71,17 @@ class MainWindow(Screen):
     def solo_submit(self):
         global _routeResult
         global solo
+        global _start_arrive_routeResult
+        global _start_arrive_shortestDistResult
         solo = True
 
-        startStation = ds.get_valid_value(self.startStationInput.text, ds.stationNode)
-        arriveStation = ds.get_valid_value(self.arriveStationInput.text, ds.stationNode)
+        startStation = self.startStationInput.text
+        arriveStation = self.arriveStationInput.text
         if (startStation != "--" and arriveStation != "--"):
             ds.solo(startStation, arriveStation)
+            _start_arrive_routeResult = ds.routeResult
+            _start_arrive_shortestDistResult = ds.ShortestDistanceResult
+
             _routeResult = str("[출발역 ~ 도착역 : {} ]\n".format(ds.routeResult))
             _routeResult += str("[거리 : {}(km)]\n".format(ds.ShortestDistanceResult))
 
@@ -118,9 +130,9 @@ class SecondWindow(Screen):
         multi = True
         _routeResult = ''
 
-        startStation_1 = ds.get_valid_value(self.startStationInput_1.text, ds.stationNode)
-        startStation_2 = ds.get_valid_value(self.startStationInput_2.text, ds.stationNode)
-        arriveStation = ds.get_valid_value(self.arriveStationInput.text, ds.stationNode)
+        startStation_1 = self.startStationInput_1.text
+        startStation_2 = self.startStationInput_2.text
+        arriveStation = self.arriveStationInput.text
         if (startStation_1 != "--" and startStation_2 != "--" and arriveStation != "--"):
             ds.multi(startStation_1, startStation_2, arriveStation)
             _stopover_arrive_routeResult = str(ds.stopover_arrive_routeResult)
@@ -129,13 +141,6 @@ class SecondWindow(Screen):
             _stopover_arrive_shortestDistResult = str(ds.stopover_arrive_shortestDistResult)
             _startStation1_stopover_shortestDistResult = str(ds.startStation1_stopover_shortestDistResult)
             _startStation2_stopover_shortestDistResult = str(ds.startStation2_stopover_shortestDistResult)
-
-            _routeResult = str("[출발역 1 ~ 경유역 : {} ]\n".format(_startStation1_stopover_routeResult))
-            _routeResult += str("[거리 : {}(km)]\n".format(_startStation1_stopover_shortestDistResult))
-            _routeResult += str("[출발역 2 ~ 경유역 : {} ]\n".format(_startStation2_stopover_routeResult))
-            _routeResult += str("[거리 : {}(km)]\n".format(_startStation2_stopover_shortestDistResult))
-            _routeResult += str("[경유역 ~ 도착역 : {} ]\n".format(_stopover_arrive_routeResult))
-            _routeResult += str("[거리 : {}(km)]\n".format(_stopover_arrive_shortestDistResult))
         else:
             pass
         try:
@@ -180,18 +185,95 @@ class SecondWindow(Screen):
 class ThirdWindow(Screen):
     def on_enter(self):
         global solo
-        global multi
-        if (solo == True):
-            self.printLabel.text = str(_routeResult + "\n")
-            solo = False
-        elif (multi == True):
-            self.printLabel.text = str(_routeResult + "\n")
-            multi = False
+        global 
+        global _start_arrive_routeResult
+        global _start_arrive_shortestDistResult
+        
+        for i in range(len(_start_arrive_routeResult)+2):
+            if (i == 0):
+                lab = Label(text = "[출발 역1 ~ 경유역]", size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                    background_color = (79/255, 126/255, 204/255, 1))
+            elif (i == len(_start_arrive_routeResult) + 1):
+                lab = Label(text = "[거리 : {}(km)]\n".format(_start_arrive_shortestDistResult),
+                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                    background_color = (79/255, 126/255, 204/255, 1))
+            else:
+                lab = Label(text = _start_arrive_routeResult[i-1], size=(240, 40),
+                        size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                        background_color = (79/255, 126/255, 204/255, 1))
+            self.gridlayout.add_widget(lab)
+
+
+
+        solo = False
 
     def on_pre_leave(self):
         global _routeResult
         _routeResult = ''
-        self.printLabel.text = ''
+
+
+class ThirdWindow1(Screen):
+    def on_enter(self):
+        global mulit
+        global _stopover_arrive_routeResult
+        global _startStation1_stopover_routeResult
+        global _startStation2_stopover_routeResult
+        global _stopover_arrive_shortestDistResult
+        global _startStation1_stopover_shortestDistResult
+        global _startStation2_stopover_shortestDistResult
+
+        grid1 = self.ids._gridlayout1
+        grid2 = self.ids._gridlayout2
+        grid3 = self.ids._gridlayout3
+
+        for i in range(len(_startStation1_stopover_routeResult)+2):
+            if (i == 0):
+                lab = Label(text = "[출발 역1 ~ 경유역]", size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                    background_color = (79/255, 126/255, 204/255, 1))
+            elif (i == len(_startStation1_stopover_routeResult) + 1):
+                lab = Label(text = "[거리 : {}(km)]\n".format(_startStation1_stopover_shortestDistResult),
+                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                    background_color = (79/255, 126/255, 204/255, 1))
+            else:
+                lab = Label(text = _startStation1_stopover_routeResult[i-1], size=(240, 40),
+                        size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                        background_color = (79/255, 126/255, 204/255, 1))
+            self.grid1.add_widget(lab)
+
+        for i in range(len(_startStation2_stopover_routeResult)+2):
+            if (i == 0):
+                lab = Label(text = "[출발 역2 ~ 경유역]", size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                    background_color = (79/255, 126/255, 204/255, 1))
+            elif (i == len(_startStation2_stopover_routeResult) + 1):
+                lab = Label(text = "[거리 : {}(km)]\n".format(_startStation1_stopover_shortestDistResult),
+                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                    background_color = (79/255, 126/255, 204/255, 1))
+            else:
+                lab = Label(text = _startStation2_stopover_routeResult[i-1], size=(240, 40),
+                        size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                        background_color = (79/255, 126/255, 204/255, 1))
+            self.grid2.add_widget(lab)
+
+        for i in range(len(_stopover_arrive_routeResult)+2):
+            if (i == 0):
+                lab = Label(text = "[출발 역1 ~ 경유역]", size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                    background_color = (79/255, 126/255, 204/255, 1))
+            elif (i == len(_stopover_arrive_routeResult) + 1):
+                lab = Label(text = "[거리 : {}(km)]\n".format(_stopover_arrive_shortestDistResult),
+                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                    background_color = (79/255, 126/255, 204/255, 1))
+            else:
+                lab = Label(text = _stopover_arrive_routeResult[i-1], size=(240, 40),
+                        size_hint=(None, None), font_name = 'nanummyeongjoEB',
+                        background_color = (79/255, 126/255, 204/255, 1))
+            self.grid3.add_widget(lab)
+
+        mulit = False
+
 
 class ListStation(Screen):
     def clicked(self):
