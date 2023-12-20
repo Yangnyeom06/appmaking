@@ -125,7 +125,7 @@ class MainWindow(Screen):
             self.startStationInput.text = station_choice
             startStation1 = False
             
-        elif(arriveStation == True):
+        if (arriveStation == True):
             self.arriveStationInput.text = station_choice
             arriveStation = False
             
@@ -188,11 +188,11 @@ class SecondWindow(Screen):
             self.startStationInput_1.text = station_choice
             startStation1 = False
 
-        elif (startStation2 == True):
+        if (startStation2 == True):
             self.startStationInput_2.text = station_choice
             startStation2 = False
             
-        elif (arriveStation == True):
+        if (arriveStation == True):
             self.arriveStationInput.text = station_choice
             arriveStation = False
 
@@ -220,7 +220,14 @@ class ThirdWindow(Screen):
 
     def on_pre_leave(self):
         global _routeResult
+        global startStation1
+        global arriveStation
+        global station_choice
+
+        startStation1 = True
+        arriveStation = True
         _routeResult = ''
+        station_choice = "--"
         self.remove_widget(self.gridlayout)
 
 
@@ -276,6 +283,15 @@ class ThirdWindow1(Screen):
 
     def on_pre_leave(self):
         global _routeResult
+        global station_choice
+        global startStation1
+        global startStation2
+        global arriveStation
+
+        startStation1 = True
+        startStation2 = True
+        arriveStation = True
+        station_choice = "--"
         _routeResult = ""
         self.remove_widget(self.gridlayout1)
         self.remove_widget(self.gridlayout2)
