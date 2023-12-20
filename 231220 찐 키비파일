@@ -2,6 +2,7 @@ WindowManager:
     MainWindow:
     SecondWindow:
     ThirdWindow:
+    ThirdWindow1:
     ListStation:
     ListStation1:
     Station_A:
@@ -231,7 +232,7 @@ WindowManager:
             pos: 150, 50
             font_name: 'nanummyeongjoEB'
             on_release:
-                app.root.current = "third"
+                app.root.current = "third1"
                 root.multi_submit()
                 root.manager.transition.direction = "left"
 
@@ -258,8 +259,6 @@ WindowManager:
 <ThirdWindow>:
     name: "third"
 
-    printLabel: _printLabel
-
     FloatLayout:
         canvas:
             Color:
@@ -267,17 +266,6 @@ WindowManager:
             Rectangle:
                 pos: self.pos
                 size: self.size
-                
-        Label:
-            color: 79/255, 126/255, 204/255, 1
-            multiline: True
-            id: _printLabel
-            text: ''
-            font_size: 15
-            size_hint: None, None
-            size: 150, 100
-            pos: 300, 150
-            font_name: 'nanummyeongjoEB'
 
         Button:
             text: "back"
@@ -292,10 +280,77 @@ WindowManager:
                 root.manager.transition.direction = "right"
 
 
+<ThirdWindow1>:
+    name: "third1"
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
 
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .2, "center_y": .5}
+        do_scroll_x: False
 
 
+        GridLayout:
+            id: _gridlayout1
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 1
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .5, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout2
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 1
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .8, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout3
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 1
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+ 
 
 
 
