@@ -258,6 +258,7 @@ WindowManager:
 
 <ThirdWindow>:
     name: "third"
+    gridlayout: _gridlayout
 
     FloatLayout:
         canvas:
@@ -279,10 +280,29 @@ WindowManager:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
 
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .2, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 1
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
 
 <ThirdWindow1>:
     name: "third1"
+    gridlayout1: _gridlayout1
+    gridlayout2: _gridlayout2
+    gridlayout3: _gridlayout3
 
+    
     FloatLayout:
         canvas:
             Color:
@@ -303,6 +323,7 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
+
     ScrollView:
         size: 500, 320
         size_hint: None, None
