@@ -84,14 +84,15 @@ def multi(startStation_1, startStation_2, arriveStation):
         compareDistance(startStatnNm, lastStatnNm) # 처음 시작1 ~ 처음 시작2 사이에 있는 역에서 마지막역까지의 거리
 
     booltype = True
+    try:
+        for i in range(1, num + 1):
+            if (globals()["routing{}".format(i)][lastStatnNm]['shortestDist'] <= currentShortestDistance):
+                currentShortestRoute = globals()["routing{}".format(i)][lastStatnNm]['route']
+                currentShortestDistance = globals()["routing{}".format(i)][lastStatnNm]['shortestDist']
 
-    for i in range(1, num + 1):
-        if (globals()["routing{}".format(i)][lastStatnNm]['shortestDist'] <= currentShortestDistance):
-            currentShortestRoute = globals()["routing{}".format(i)][lastStatnNm]['route']
-            currentShortestDistance = globals()["routing{}".format(i)][lastStatnNm]['shortestDist']
-
-            stopover = currentShortestRoute[0]
-
+                stopover = currentShortestRoute[0]
+    except:
+        pass
 
     compareDistance(startStatnNm1, stopover) # 처음 시작1 부터 경유역까지
     global startStation1_stopover_routeResult
