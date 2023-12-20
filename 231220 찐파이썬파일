@@ -44,6 +44,19 @@ l = True
 m = True
 n = True
 
+a1 = True
+b1 = True
+c1 = True
+e1 = True
+f1 = True
+g1 = True
+h1 = True
+i1 = True
+j1 = True
+l1 = True
+m1 = True
+n1 = True
+
 station_choice = "--"
 startStation1 = False
 startStation2 = False
@@ -579,8 +592,8 @@ class Station_N(Screen):
 #region station
 class Station_A1(Screen):
     def on_enter(self):
-        global a
-        if (a == True):
+        global a1
+        if (a1 == True):
             for i in range(len(a_list)):
                 btn = Button(text=str(a_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -590,7 +603,7 @@ class Station_A1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        a = False
+        a1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -603,8 +616,8 @@ class Station_A1(Screen):
 class Station_B1(Screen):
     def on_enter(self):
         global station_choice
-        global b
-        if (b == True):
+        global b1
+        if (b1 == True):
             for i in range(len(b_list)):
                 btn = Button(text=str(b_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -613,7 +626,7 @@ class Station_B1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        b = False
+        b1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -626,8 +639,8 @@ class Station_B1(Screen):
 class Station_C1(Screen):
     def on_enter(self):
         global station_choice
-        global c
-        if (c == True):
+        global c1
+        if (c1 == True):
             for i in range(len(c_list)):
                 btn = Button(text=str(c_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -636,7 +649,7 @@ class Station_C1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        c = False
+        c1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -649,8 +662,8 @@ class Station_C1(Screen):
 class Station_E1(Screen):
     def on_enter(self):
         global station_choice
-        global e
-        if (e == True):
+        global e1
+        if (e1 == True):
             for i in range(len(e_list)):
                 btn = Button(text=str(e_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -659,7 +672,7 @@ class Station_E1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        e = False
+        e1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -672,8 +685,8 @@ class Station_E1(Screen):
 class Station_F1(Screen):
     def on_enter(self):
         global station_choice
-        global f
-        if (f == True):
+        global f1
+        if (f1 == True):
             for i in range(len(f_list)):
                 btn = Button(text=str(f_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -682,7 +695,7 @@ class Station_F1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        f = False
+        f1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -695,8 +708,8 @@ class Station_F1(Screen):
 class Station_G1(Screen):
     def on_enter(self):
         global station_choice
-        global g
-        if (g == True):
+        global g1
+        if (g1 == True):
             for i in range(len(g_list)):
                 btn = Button(text=str(g_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -705,7 +718,7 @@ class Station_G1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        g = False
+        g1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -718,8 +731,8 @@ class Station_G1(Screen):
 class Station_H1(Screen):
     def on_enter(self):
         global station_choice
-        global h
-        if (h == True):
+        global h1
+        if (h1 == True):
             for i in range(len(h_list)):
                 btn = Button(text=str(h_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -728,7 +741,7 @@ class Station_H1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        h = False
+        h1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -741,8 +754,8 @@ class Station_H1(Screen):
 class Station_I1(Screen):
     def on_enter(self):
         global station_choice
-        global i
-        if (i == True):
+        global i1
+        if (i1 == True):
             for i in range(len(i_list)):
                 btn = Button(text=str(i_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -751,7 +764,7 @@ class Station_I1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        i = False
+        i1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -763,8 +776,8 @@ class Station_I1(Screen):
 class Station_J1(Screen):
     def on_enter(self):
         global station_choice
-        global j
-        if (j == True):
+        global j1
+        if (j1 == True):
             for i in range(len(j_list)):
                 btn = Button(text=str(j_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -773,7 +786,7 @@ class Station_J1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        j = False
+        j1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -785,8 +798,8 @@ class Station_J1(Screen):
 class Station_L1(Screen):
     def on_enter(self):
         global station_choice
-        global l
-        if (l == True):
+        global l1
+        if (l1 == True):
             for i in range(len(l_list)):
                 btn = Button(text=str(l_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -795,7 +808,7 @@ class Station_L1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        l = False
+        l1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -807,8 +820,8 @@ class Station_L1(Screen):
 class Station_M1(Screen):
     def on_enter(self):
         global station_choice
-        global m
-        if (m == True):
+        global m1
+        if (m1 == True):
             for i in range(len(m_list)):
                 btn = Button(text=str(m_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -817,7 +830,7 @@ class Station_M1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        m = False
+        m1 = False
 
     def on_pre_leave(self):
         global station_choice
@@ -829,8 +842,8 @@ class Station_M1(Screen):
 class Station_N1(Screen):
     def on_enter(self):
         global station_choice
-        global n
-        if (n == True):
+        global n1
+        if (n1 == True):
             for i in range(len(n_list)):
                 btn = Button(text=str(n_list[i]), size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
@@ -839,7 +852,7 @@ class Station_N1(Screen):
                 btn.bind(on_release = self.sendStation)
 
                 self.gridlayout.add_widget(btn)
-        n = False
+        n1 = False
 
     def on_pre_leave(self):
         global station_choice
