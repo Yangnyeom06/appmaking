@@ -1,0 +1,2105 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+    ThirdWindow1:
+    ListStation:
+    ListStation1:
+    Station_A:
+    Station_B:
+    Station_C:
+    Station_E:
+    Station_F:
+    Station_G:
+    Station_H:
+    Station_I:
+    Station_J:
+    Station_L:
+    Station_M:
+    Station_N:
+    Station_A1:
+    Station_B1:
+    Station_C1:
+    Station_E1:
+    Station_F1:
+    Station_G1:
+    Station_H1:
+    Station_I1:
+    Station_J1:
+    Station_L1:
+    Station_M1:
+    Station_N1:
+
+
+<MainWindow>:
+    name: "main"
+
+    startStation: _startStation
+    startStationInput: _startStationInput
+    arriveStation: _arriveStation
+    arriveStationInput: _arriveStationInput
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            color: 79/255, 126/255, 204/255, 1
+            id: _startStation
+            text: '출발역'
+            font_size: 30
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 400
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            id: _startStationInput
+            background_color: 79/255, 126/255, 204/255, 1
+            text: '--'
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 400
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "right"
+                root.clicked_start1()
+
+        Label:
+            color: 79/255, 126/255, 204/255, 1
+            id: _arriveStation
+            text: '도착역'
+            font_size: 30
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 300
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            id: _arriveStationInput
+            background_color: 79/255, 126/255, 204/255, 1
+            text: '--'
+            password: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 300
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "right"
+                root.clicked_arrive()
+
+        Button:
+            text: 'Submit'
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 50
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "third"
+                root.solo_submit()
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Go for two"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 150
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+
+
+
+
+
+
+
+
+<SecondWindow>:
+    name: "second"
+
+    startStation_1: _startStation_1
+    startStationInput_1: _startStationInput_1
+    startStation_2: _startStation_2
+    startStationInput_2: _startStationInput_2
+    arriveStation: _arriveStation
+    arriveStationInput: _arriveStationInput
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            color: 79/255, 126/255, 204/255, 1
+            id: _startStation_1
+            text: '출발역1'
+            font_size: 30
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 500
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            id: _startStationInput_1
+            background_color: 79/255, 126/255, 204/255, 1
+            text: '--'
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 500
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "right"
+                root.clicked_start1()
+
+        Label:
+            color: 79/255, 126/255, 204/255, 1
+            id: _arriveStation
+            text: '도착역'
+            font_size: 30
+            size_hint: None, None
+            size: 150, 100
+            pos: 0, 300
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            id: _arriveStationInput
+            background_color: 79/255, 126/255, 204/255, 1
+            text: '--'
+            password: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 300
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "right"
+                root.clicked_arrive()
+
+        Label:
+            color: 79/255, 126/255, 204/255, 1
+            id: _startStation_2
+            text: '출발역2'
+            font_size: 30
+            size_hint: None, None
+            size: 150, 100
+            pos:  0, 400
+            font_name: 'nanummyeongjoEB'
+
+        Button:
+            id: _startStationInput_2
+            background_color: 79/255, 126/255, 204/255, 1
+            text: '--'
+            mulitiline: False
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 400
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "right"
+                root.clicked_start2()
+
+        Button:
+            text: 'Submit'
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 50
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "third1"
+                root.multi_submit()
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Go for one"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 150
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+
+
+
+
+
+
+
+
+<ThirdWindow>:
+    name: "third"
+    gridlayout: _gridlayout
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .2, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 1
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+<ThirdWindow1>:
+    name: "third1"
+    gridlayout1: _gridlayout1
+    gridlayout2: _gridlayout2
+    gridlayout3: _gridlayout3
+
+    
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .2, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout1
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 1
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .5, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout2
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 1
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .8, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout3
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 1
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+ 
+
+
+
+
+
+<ListStation>:
+    name: "ListStation"
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "left"
+                root.clicked()
+
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .5, "center_y": .5}
+        do_scroll_x: False
+
+
+
+        GridLayout:
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+            Button:
+                text: "ㄱ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_A"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㄴ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_B"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㄷ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_C"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅁ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_E"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅂ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_F"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅅ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_G"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅇ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_H"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅈ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_I"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅊ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_J"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅌ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_L"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅍ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_M"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅎ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_N"
+                    root.manager.transition.direction = "right"
+
+
+
+<ListStation1>:
+    name: "ListStation1"
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 150, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+                root.clicked()
+
+    ScrollView:
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .5, "center_y": .5}
+        do_scroll_x: False
+
+
+
+        GridLayout:
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+            Button:
+                text: "ㄱ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_A1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㄴ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_B1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㄷ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_C1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅁ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_E1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅂ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_F1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅅ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_G1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅇ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_H1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅈ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_I1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅊ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_J1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅌ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_L1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅍ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_M1"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "ㅎ"
+                background_color: 79/255, 126/255, 204/255, 1
+                size_hint: None, None
+                size: 240, 40
+                font_name: 'nanummyeongjoEB'
+                on_release:
+                    app.root.current = "station_N1"
+                    root.manager.transition.direction = "right"
+
+
+
+
+
+
+
+
+
+
+
+<Station_A>:
+    name: "station_A"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos:25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            background_color: 79/255, 126/255, 204/255, 1
+            text: "submit"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+<Station_B>:
+    name: "station_B"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_C>:
+    name: "station_C"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "back"
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            background_color: 79/255, 126/255, 204/255, 1
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_E>:
+    name: "station_E"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_F>:
+    name: "station_F"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_G>:
+    name: "station_G"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_H>:
+    name: "station_H"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_I>:
+    name: "station_I"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_J>:
+    name: "station_J"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_L>:
+    name: "station_L"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_M>:
+    name: "station_M"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_N>:
+    name: "station_N"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+
+
+<Station_A1>:
+    name: "station_A1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+<Station_B1>:
+    name: "station_B1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_C1>:
+    name: "station_C1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_E1>:
+    name: "station_E1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_F1>:
+    name: "station_F1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_G1>:
+    name: "station_G1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_H1>:
+    name: "station_H1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_I1>:
+    name: "station_I1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_J1>:
+    name: "station_J1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_L1>:
+    name: "station_L1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_M1>:
+    name: "station_M1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
+
+
+
+<Station_N1>:
+    name: "station_N1"
+
+    scrollview: _scrollview
+    gridlayout: _gridlayout
+    submit: _submit
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: .9, .9, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: "back"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 25, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "ListStation1"
+                root.manager.transition.direction = "left"
+
+        Button:
+            id: _submit
+            text: "submit"
+            background_color: 79/255, 126/255, 204/255, 1
+            font_size: 30
+            size_hint: None, None
+            size: 250, 100
+            pos: 275, 0
+            font_name: 'nanummyeongjoEB'
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+    ScrollView:
+        id: _scrollview
+        size: 500, 320
+        size_hint: None, None
+        pos_hint: {"center_x": .49, "center_y": .5}
+        do_scroll_x: False
+
+
+        GridLayout:
+            id: _gridlayout
+            size_hint: None, None
+            height: self.minimum_height
+            cols: 2
+            spacing: "10dp"
+            padding: "10dp"
+            width: 235
