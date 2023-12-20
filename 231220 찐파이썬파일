@@ -191,17 +191,14 @@ class ThirdWindow(Screen):
         
         for i in range(len(_start_arrive_routeResult)+2):
             if (i == 0):
-                lab = Label(text = "[출발 역1 ~ 경유역]", size=(240, 40),
-                    size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                    background_color = (79/255, 126/255, 204/255, 1))
+                lab = Label(text = "[출발 역1 ~ 도착역]", size=(240, 40),
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
             elif (i == len(_start_arrive_routeResult) + 1):
                 lab = Label(text = "[거리 : {}(km)]\n".format(_start_arrive_shortestDistResult),
-                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                    background_color = (79/255, 126/255, 204/255, 1))
+                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB')
             else:
                 lab = Label(text = _start_arrive_routeResult[i-1], size=(240, 40),
-                        size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                        background_color = (79/255, 126/255, 204/255, 1))
+                        size_hint=(None, None), font_name = 'nanummyeongjoEB')
             self.gridlayout.add_widget(lab)
 
 
@@ -211,6 +208,7 @@ class ThirdWindow(Screen):
     def on_pre_leave(self):
         global _routeResult
         _routeResult = ''
+        self.remove_widget(self.gridlayout)
 
 
 class ThirdWindow1(Screen):
@@ -227,50 +225,48 @@ class ThirdWindow1(Screen):
         for i in range(len(_startStation1_stopover_routeResult)+2):
             if (i == 0):
                 lab = Label(text = "[출발 역1 ~ 경유역]", size=(240, 40),
-                    size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                    background_color = (79/255, 126/255, 204/255, 1))
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
             elif (i == len(_startStation1_stopover_routeResult) + 1):
                 lab = Label(text = "[거리 : {}(km)]\n".format(_startStation1_stopover_shortestDistResult),
-                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                    background_color = (79/255, 126/255, 204/255, 1))
+                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB')
             else:
                 lab = Label(text = _startStation1_stopover_routeResult[i-1], size=(240, 40),
-                        size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                        background_color = (79/255, 126/255, 204/255, 1))
+                        size_hint=(None, None), font_name = 'nanummyeongjoEB')
             self.gridlayout1.add_widget(lab)
 
         for i in range(len(_startStation2_stopover_routeResult)+2):
             if (i == 0):
                 lab = Label(text = "[출발 역2 ~ 경유역]", size=(240, 40),
-                    size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                    background_color = (79/255, 126/255, 204/255, 1))
+                    size_hint=(None, None), font_name = 'nanummyeongjoEB')
             elif (i == len(_startStation2_stopover_routeResult) + 1):
                 lab = Label(text = "[거리 : {}(km)]\n".format(_startStation1_stopover_shortestDistResult),
-                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                    background_color = (79/255, 126/255, 204/255, 1))
+                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB')
             else:
                 lab = Label(text = _startStation2_stopover_routeResult[i-1], size=(240, 40),
-                        size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                        background_color = (79/255, 126/255, 204/255, 1))
+                        size_hint=(None, None), font_name = 'nanummyeongjoEB')
             self.gridlayout2.add_widget(lab)
 
         for i in range(len(_stopover_arrive_routeResult)+2):
             if (i == 0):
-                lab = Label(text = "[출발 역1 ~ 경유역]", size=(240, 40),
+                lab = Label(text = "[경유역 ~ 도착역]", size=(240, 40),
                     size_hint=(None, None), font_name = 'nanummyeongjoEB',
                     background_color = (79/255, 126/255, 204/255, 1))
             elif (i == len(_stopover_arrive_routeResult) + 1):
                 lab = Label(text = "[거리 : {}(km)]\n".format(_stopover_arrive_shortestDistResult),
-                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                    background_color = (79/255, 126/255, 204/255, 1))
+                    size=(240, 40), size_hint=(None, None), font_name = 'nanummyeongjoEB')
             else:
                 lab = Label(text = _stopover_arrive_routeResult[i-1], size=(240, 40),
-                        size_hint=(None, None), font_name = 'nanummyeongjoEB',
-                        background_color = (79/255, 126/255, 204/255, 1))
+                        size_hint=(None, None), font_name = 'nanummyeongjoEB')
             self.gridlayout3.add_widget(lab)
 
         mulit = False
 
+    def on_pre_leave(self):
+        global _routeResult
+        _routeResult = ""
+        self.remove_widget(self.gridlayout1)
+        self.remove_widget(self.gridlayout2)
+        self.remove_widget(self.gridlayout3)
 
 class ListStation(Screen):
     def clicked(self):
