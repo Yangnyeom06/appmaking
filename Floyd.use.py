@@ -126,6 +126,8 @@ def compareDistance(StatnNm1, StatnNm2):
         print("ShortestDistance :", shortest_dist)
     return path_names, shortest_dist
 
+currentShortestRoute = []  # 최단 경로를 저장할 리스트
+
 # 멀티 경로 찾기 함수
 def multi(startStation1, startStation2, arriveStation):
     global currentShortestDistance
